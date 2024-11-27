@@ -1,8 +1,8 @@
 ---
 manufacturer: Cabeus
-model: PLHD-48-Cat_5e-Dual
-slug: cabeus-plhd-48-cat_5e-dual
-comments: Cabeus PLHD-48-Cat.5e-Dual IDC-1U High Density Patch Panel 19", 1U, 48 RJ-45 ports, Category 5e, Dual IDC
+model: PLHD-48-Cat5e-Dual
+slug: cabeus-plhd-48-cat5e-dual
+comments: Cabeus PLHD-48-Cat.5e-Dual IDC-1U High Density Patch Panel 19
 u_height: 1
 airflow: passive
 is_powered: false
