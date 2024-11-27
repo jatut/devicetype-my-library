@@ -6,7 +6,7 @@ comments: Cabeus PLHD-48-Cat.5e-Dual IDC-1U High Density Patch Panel 19" 1U
 u_height: 1
 airflow: passive
 is_powered: false
-#front_image: true
+front_image: true
 front-ports:
   - name: Port 1
     type: 8p8c
