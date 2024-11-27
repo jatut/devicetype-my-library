@@ -1,0 +1,30 @@
+---
+manufacturer: TP-Link
+model: TL-SG1008G
+slug: tp-link-tl-sg1008g
+part_number: TL-SG1008E
+comments: '[TP-Link TL-SG1008G](https://www.tp-link.com/us/home-networking/8-port-switch/ls1008g//#specifications)'
+is_full_depth: false
+u_height: 0
+airflow: passive
+power-ports:
+  - name: External Power Adapter
+    type: dc-terminal
+    maximum_draw: 4
+interfaces:
+  - name: Port 1
+    type: 1000base-t
+  - name: Port 2
+    type: 1000base-t
+  - name: Port 3
+    type: 1000base-t
+  - name: Port 4
+    type: 1000base-t
+  - name: Port 5
+    type: 1000base-t
+  - name: Port 6
+    type: 1000base-t
+  - name: Port 7
+    type: 1000base-t
+  - name: Port 8
+    type: 1000base-t
