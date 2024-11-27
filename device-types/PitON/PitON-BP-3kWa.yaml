@@ -1,0 +1,16 @@
+---
+manufacturer: PitON
+model: PitON BP-3kWa
+slug: piton-bp-3kwa
+part_number: BP-3kWa
+u_height: 2
+is_full_depth: false
+comments: Rack PDU, Switched, 1U, 16A, 208/230V, (8)C13
+console-ports:
+  - name: Serial
+    type: rj-12
+power-ports:
+  - name: Power Port IN
+    type: iec-60320-c20
+  - name: Power Port OUT
+    type: iec-60320-c20
