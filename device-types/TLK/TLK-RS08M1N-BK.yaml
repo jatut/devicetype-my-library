@@ -1,0 +1,40 @@
+---
+manufacturer: TLK
+model: TLK-RS08M1N-BK
+slug: tlk-tlk-rs08m1n-bk
+part_number: TLK-RS08M1N-BK
+comments: '[TLK TLK-RS08M1N-BK](https://tlk-rc.ru/catalog/product/TLK-RS08M1N-BK/?section=power_supply&ysclid=m411r6c58o643238824)'
+u_height: 1
+is_full_depth: false
+airflow: passive
+weight: 1.0
+weight_unit: kg
+front_image: true
+power-ports:
+  - name: Power 1
+    type: iec-60320-c14
+power-outlets:
+  - name: Outlet 1
+    type: ita-f
+    power_port: Power 1
+  - name: Outlet 2
+    type: ita-f
+    power_port: Power 1
+  - name: Outlet 3
+    type: ita-f
+    power_port: Power 1
+  - name: Outlet 4
+    type: ita-f
+    power_port: Power 1
+  - name: Outlet 5
+    type: ita-f
+    power_port: Power 1
+  - name: Outlet 6
+    type: ita-f
+    power_port: Power 1
+  - name: Outlet 7
+    type: ita-f
+    power_port: Power 1
+  - name: Outlet 8
+    type: ita-f
+    power_port: Power 1
