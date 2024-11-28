@@ -1,0 +1,39 @@
+---
+manufacturer: Securitycode
+model: Securitycode IPC-100
+part_number: IPC-100
+slug: securitycode-ipc-100
+is_full_depth: false
+front_image: False
+u_height: 0
+airflow: passive
+console-ports:
+  - name: Key port
+    type: other
+  - name: PS2
+    type: mini-din-8
+  - name: Display Port
+    type: other
+  - name: serial
+    type: de-9
+  - name: USB 1
+    type: usb-a
+  - name: USB 2
+    type: usb-a
+interfaces:
+  - name: em0
+    type: 1000base-t
+  - name: em1
+    type: 1000base-t
+  - name: em2
+    type: 1000base-t
+  - name: em3
+    type: 1000base-t
+  - name: em4
+    type: 1000base-t
+  - name: em5
+    type: 1000base-t
+power-ports:
+  - name: PSU#1
+    type: iec-60320-c14
+    maximum_draw: 25
