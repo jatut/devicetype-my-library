@@ -1,0 +1,34 @@
+---
+manufacturer: Securitycode
+model: Securitycode IPC-R50
+part_number: IPC-R50
+slug: securitycode-ipc-r50
+is_full_depth: false
+u_height: 0
+airflow: passive
+console-ports:
+  - name: serial0
+    type: rj-45
+interfaces:
+  - name: te-0-1
+    type: 10gbase-x-sfpp
+  - name: gi-0-0
+    type: 1000base-t
+  - name: gi-0-1
+    type: 1000base-t
+  - name: gi-0-2
+    type: 1000base-t
+  - name: gi-0-3
+    type: 1000base-t
+power-ports:
+  - name: External Power Adapter
+    type: dc-terminal
+    maximum_draw: 4
+console-ports:
+  - name: USB 1
+    type: usb-a
+  - name: USB 2
+    type: usb-a
+  - name: VGA
+    type: other
+    
