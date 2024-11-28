@@ -10,15 +10,15 @@ console-ports:
   - name: serial0
     type: rj-45
 interfaces:
-  - name: te-0-1
+  - name: te-1-0
     type: 10gbase-x-sfpp
   - name: gi-0-0
     type: 1000base-t
-  - name: gi-0-1
+  - name: gi-1-0
     type: 1000base-t
-  - name: gi-0-2
+  - name: gi-2-0
     type: 1000base-t
-  - name: gi-0-3
+  - name: gi-3-0
     type: 1000base-t
 power-ports:
   - name: External Power Adapter
@@ -29,6 +29,5 @@ console-ports:
     type: usb-a
   - name: USB 2
     type: usb-a
-#  - name: VGA
-#    type: other
-
+  - name: Port VGA
+    type: other
