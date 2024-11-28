@@ -7,7 +7,7 @@ comments: NIKOMAX NMC-PR48UD2-1U-BK High Density Patch Panel 19" 1U
 u_height: 1
 airflow: passive
 is_powered: false
-front_image: false
+front_image: true
 front-ports:
   - name: Port 1
     type: 8p8c
