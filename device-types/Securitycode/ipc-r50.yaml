@@ -29,5 +29,5 @@ console-ports:
     type: usb-a
   - name: USB 2
     type: usb-a
-  - name: Port VGA
+  - name: Display Port
     type: other
