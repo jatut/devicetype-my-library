@@ -4,6 +4,7 @@ model: MES2348P
 slug: eltex-mes2348p
 part_number: MES2348P
 is_full_depth: false
+front_image: true
 u_height: 1
 interfaces:
   - name: gigabitethernet1/0/1
