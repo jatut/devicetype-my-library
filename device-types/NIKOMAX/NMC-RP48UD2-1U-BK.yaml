@@ -1,9 +1,9 @@
 ---
 manufacturer: NIKOMAX
-model: NIKOMAX NMC-PR48UD2-1U-BK
-part_number: NMC-PR48UD2-1U-BK
-slug: nikomax-nmc-pr48ud2-1u-bk
-comments: NIKOMAX NMC-PR48UD2-1U-BK High Density Patch Panel 19" 1U
+model: NIKOMAX NMC-RP48UD2-1U-BK
+part_number: NMC-RP48UD2-1U-BK
+slug: nikomax-nmc-rp48ud2-1u-bk
+comments: NIKOMAX NMC-RP48UD2-1U-BK High Density Patch Panel 19" 1U
 u_height: 1
 airflow: passive
 is_powered: false
