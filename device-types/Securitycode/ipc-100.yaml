@@ -4,7 +4,7 @@ model: Securitycode IPC-100
 part_number: IPC-100
 slug: securitycode-ipc-100
 is_full_depth: false
-front_image: False
+front_image: false
 u_height: 0
 airflow: passive
 console-ports:
@@ -12,7 +12,7 @@ console-ports:
     type: other
   - name: PS2
     type: mini-din-8
-  - name: Display Port
+  - name: Port VGA
     type: other
   - name: serial
     type: de-9
