@@ -1,8 +1,8 @@
 ---
 manufacturer: Aquarius
-model: T50 D110CF-R54-QRET
-slug: aquarius-t50-d110cf-r54-qret
-part_number: QRET-T50D110CF2X22864R424L01RLTQNN3
+model: T52 D424BJ-R54
+slug: aquarius-t52-d424bj-r54
+part_number: QRET-T52D424BJ2X21416R2810O01RLHRNNN3
 u_height: 2
 is_full_depth: true
 front_image: true
