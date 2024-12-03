@@ -1,10 +1,10 @@
 ---
-manufacturer: Aquarius
-model: Pro-W63-K31CB
-slug: aquarius-pro-w63-k31cb
-part_number: QDP-W63K31C1B2418C125L02NLNYT0N3
-#u_height: 2
-#is_full_depth: true
+manufacturer: IBM
+model: eServer x226
+slug: ibm-eserver-x226
+part_number: 86482DG
+u_height: 5
+is_full_depth: true
 console-ports:
   - name: Serial
     type: de-9
