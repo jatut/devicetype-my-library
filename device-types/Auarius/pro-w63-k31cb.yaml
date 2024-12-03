@@ -25,8 +25,8 @@ front-ports:
   - name: Front USB3
     type: usb-a
   - name: Front USB4
-rear-ports:
     type: usb-a
+rear-ports:
   - name: Rear PS2
     type: other
   - name: Rear USB1
@@ -41,3 +41,14 @@ rear-ports:
     type: other
   - name: Rear Display port 4
     type: other
+  - name: Rear USB3
+    type: usb-a
+  - name: Rear USB4
+    type: usb-a
+  - name: AUX-port 1
+    type: other
+  - name: AUX-port 2
+    type: other
+  - name: AUX-port 3
+    type: other
+    
