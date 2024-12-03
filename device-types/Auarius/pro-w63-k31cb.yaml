@@ -32,7 +32,11 @@ console-server-ports:
     type: usb-a
   - name: Rear USB2
     type: usb-a
-  - name: Rear DVI
-    type: other
   - name: Rear Display port 1
+    type: other
+  - name: Rear Display port 2
+    type: other
+  - name: Rear Display port 3
+    type: other
+  - name: Rear Display port 4
     type: other
