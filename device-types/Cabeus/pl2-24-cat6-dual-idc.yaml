@@ -1,8 +1,8 @@
 ---
 manufacturer: Cabeus
-model: Cabeus PLHD-24-Cat6
-slug: cabeus-plhd-24-cat6-dual
-comments: Cabeus PLHD-24-Cat.6 IDC-1U High Density Patch Panel 19" 1U
+model: Cabeus PL2-24-Cat6-Dual-IDC
+slug: cabeus-pl2-24-cat6-dual-idc
+comments: Cabeus PL2-24-Cat.6 IDC-1U High Density Patch Panel 19" 1U
 u_height: 1
 airflow: passive
 is_powered: false
