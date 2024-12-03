@@ -5,6 +5,8 @@ slug: aquarius-t40-s102df-b
 part_number: T40-S102DF-B
 u_height: 1
 is_full_depth: true
+front_image: true
+rear_image: true
 console-ports:
   - name: Serial
     type: de-9
