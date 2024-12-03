@@ -2,14 +2,10 @@
 
 ## About this Library
 
-Эта библиотека предназначена для заполнения типов устройств в [NetBox](https://github.com/netbox-community/netbox). Он содержит набор определений типов устройств, выраженных в формате YAML и упорядоченных по производителю. Каждый файл представляет отдельный тип физического устройства (например, марку и модель). Эти определения можно загрузить в NetBox вместо создания определений новых типов устройств вручную.
-It contains a set of device type definitions expressed in YAML and arranged by manufacturer. Each file represents a
-discrete physical device type (e.g. make and model). These definitions can be loaded into NetBox instead of creating
-new device type definitions manually.
-Он содержит набор определений типов устройств, выраженных в формате YAML и упорядоченных по производителю. Каждый файл представляет отдельный тип физического устройства (например, марку и модель). Эти определения можно загрузить в NetBox вместо создания определений новых типов устройств вручную.
+Эта библиотека предназначена для заполнения типов устройств в [NetBox](https://github.com/netbox-community/netbox). Она содержит набор определений типов устройств, выраженных в формате YAML и упорядоченных по производителю. Каждый файл представляет отдельный тип физического устройства (например, марку и модель). Эти определения можно загрузить в NetBox вместо создания определений новых типов устройств вручную.
 
-If you would like to contribute to this library, please read through our [contributing guide](CONTRIBUTING.md) before
-submitting content.
+
+Если вы хотите внести свой вклад в эту библиотеку, пожалуйста, прочитайте нашу [руководство по содействию](CONTRIBUTING.md) перед отправкой контента.
 
 **Note: As of March 2023 Netbox-Device-Type-Library-Import has been brought into the NetBox Community Organization. We will work to get this fully supported soon.**
 If you would like to automate the import of these devicetype template files, there is a NetBox Community ~~**community based**~~ python script
