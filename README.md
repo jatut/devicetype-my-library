@@ -2,10 +2,11 @@
 
 ## About this Library
 
-This library is intended to be used for populating device types in [NetBox](https://github.com/netbox-community/netbox).
+Эта библиотека предназначена для заполнения типов устройств в [NetBox](https://github.com/netbox-community/netbox). Он содержит набор определений типов устройств, выраженных в формате YAML и упорядоченных по производителю. Каждый файл представляет отдельный тип физического устройства (например, марку и модель). Эти определения можно загрузить в NetBox вместо создания определений новых типов устройств вручную.
 It contains a set of device type definitions expressed in YAML and arranged by manufacturer. Each file represents a
 discrete physical device type (e.g. make and model). These definitions can be loaded into NetBox instead of creating
 new device type definitions manually.
+Он содержит набор определений типов устройств, выраженных в формате YAML и упорядоченных по производителю. Каждый файл представляет отдельный тип физического устройства (например, марку и модель). Эти определения можно загрузить в NetBox вместо создания определений новых типов устройств вручную.
 
 If you would like to contribute to this library, please read through our [contributing guide](CONTRIBUTING.md) before
 submitting content.
