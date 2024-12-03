@@ -42,7 +42,6 @@
                     "type": "string",
                     "enum": [
                         "de-9",
-                        "de-15",
                         "db-25",
                         "rj-11",
                         "rj-12",
