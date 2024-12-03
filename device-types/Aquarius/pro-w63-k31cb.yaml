@@ -17,7 +17,7 @@ interfaces:
     type: 1000base-t
   - name: ETH-2
     type: 1000base-t
-front-ports:
+console-ports:
   - name: Front USB1
     type: usb-a
   - name: Front USB2
@@ -26,7 +26,6 @@ front-ports:
     type: usb-a
   - name: Front USB4
     type: usb-a
-rear-ports:
   - name: Rear PS2
     type: other
   - name: Rear USB1
