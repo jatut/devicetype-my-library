@@ -18,6 +18,10 @@ interfaces:
   - name: ETH-2
     type: 1000base-t
 console-ports:
+  - name: Front AUX-port 1
+    type: other
+  - name: Front AUX-port 2
+    type: other
   - name: Front USB1
     type: usb-a
   - name: Front USB2
@@ -44,9 +48,9 @@ console-ports:
     type: usb-a
   - name: Rear USB4
     type: usb-a
-  - name: AUX-port 1
+  - name: Rear AUX-port 1
     type: other
-  - name: AUX-port 2
+  - name: Rear AUX-port 2
     type: other
-  - name: AUX-port 3
+  - name: Rear AUX-port 3
     type: other
