@@ -32,4 +32,3 @@ console-server-ports:
     type: usb-a
   - name: Rear USB2
     type: usb-a
-    
