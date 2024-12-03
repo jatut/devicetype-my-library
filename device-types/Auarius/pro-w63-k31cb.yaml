@@ -34,5 +34,5 @@ console-server-ports:
     type: usb-a
   - name: Rear DVI
     type: other
-  - name: Rear VGA
+  - name: Rear Display port 1
     type: other
