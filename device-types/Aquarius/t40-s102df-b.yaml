@@ -1,0 +1,60 @@
+---
+manufacturer: Aquarius
+model: T40-S102DF-B
+slug: aquarius-t40-s102df-b
+part_number: T40-S102DF-b
+u_height: 1
+is_full_depth: true
+console-ports:
+  - name: Serial
+    type: de-9
+power-ports:
+  - name: PSU1
+    type: iec-60320-c14
+    maximum_draw: 514
+power-ports:
+  - name: PSU2
+    type: iec-60320-c14
+    maximum_draw: 514
+interfaces:
+  - name: ETH-1
+    type: 1000base-t
+  - name: ETH-2
+    type: 1000base-t
+console-ports:
+  - name: Front AUX-port 1
+    type: other
+  - name: Front AUX-port 2
+    type: other
+  - name: Front USB1
+    type: usb-a
+  - name: Front USB2
+    type: usb-a
+  - name: Front USB3
+    type: usb-a
+  - name: Front USB4
+    type: usb-a
+  - name: Rear PS2
+    type: other
+  - name: Rear USB1
+    type: usb-a
+  - name: Rear USB2
+    type: usb-a
+  - name: Rear Display port 1
+    type: other
+  - name: Rear Display port 2
+    type: other
+  - name: Rear Display port 3
+    type: other
+  - name: Rear Display port 4
+    type: other
+  - name: Rear USB3
+    type: usb-a
+  - name: Rear USB4
+    type: usb-a
+  - name: Rear AUX-port 1
+    type: other
+  - name: Rear AUX-port 2
+    type: other
+  - name: Rear AUX-port 3
+    type: other
