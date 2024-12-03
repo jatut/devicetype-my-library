@@ -17,7 +17,7 @@ interfaces:
     type: 1000base-t
   - name: ETH-2
     type: 1000base-t
-console-server-ports:
+console-pc-ports:
   - name: Front USB1
     type: usb-a
   - name: Front USB2
