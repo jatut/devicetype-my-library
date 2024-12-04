@@ -12,19 +12,19 @@
 позволит вам выборочно импортировать поставщиков и т. д., доступный здесь [netbox-community/Device-Type-Library-Import](https://github.com/netbox-community/Device-Type-Library-Import).
  ~~** Примечание:** Это никаким официальным образом не связано с NetBox, и вы не получите здесь поддержки.~~
 
-## Device Type Definitions
+## Определения типа устройства
 
-Each definition **must** include at minimum the following fields:
+Каждое определение **должно** включать, как минимум, следующие поля:
 
-- `manufacturer`: The name of the manufacturer which produces this device type.
-  - Type: String
-- `model`: The model number of the device type. This must be unique per manufacturer.
-  - Type: String
-- `slug`: A URL-friendly representation of the model number. Like the model number, this must be unique per
-  manufacturer. All slugs should have the manufacturers name prepended to it with a dash, please see the example below.
-  - Type: String
-  - Pattern: `"^[-a-zA-Z0-9_]+$"`. Must match the following characters: `-`, `_`, Uppercase or Lowercase `a` to `z`, Numbers `0` to `9`.
-
+- `manufacturer`: Название производителя, выпускающего данный тип устройства.
+  - Тип: Строка
+- `model`: Номер модели, соответствующий типу устройства. Он должен быть уникальным для каждого производителя.
+  - Тип: Строка
+- `slug`: Удобное для использования в URL-адресе представление номера модели. Как и номер модели, оно должно быть уникальным для 
+каждого производителя. Перед всеми слитками должно быть указано название производителя с тире, пожалуйста, смотрите пример ниже.
+  - Тип: Строка
+  - Шаблон: `"^[-a-zA-Z0-9_]+$"`. Должны совпадать со следующими символами: `-`, `_`, прописными или строчными буквами от `a` до `z`, цифрами от `0` до `9`.
+  
 :test_tube: Example:
 
   ```yaml
