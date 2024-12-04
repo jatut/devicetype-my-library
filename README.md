@@ -126,7 +126,7 @@
 
 **[Documentation](https://docs.netbox.dev/en/stable/models/dcim/consoleserverport/)**
 
-A console server is a device which provides remote access to the local consoles of connected devices. They are typically used to provide remote out-of-band access to network devices, and generally connect to console ports.
+Консольный сервер - это устройство, которое обеспечивает удаленный доступ к локальным консолям подключенных устройств. Обычно они используются для обеспечения удаленного внеполосного доступа к сетевым устройствам и, как правило, для подключения к консольным портам.
 
 - `name`: Имя
 - `label`: Метка
@@ -136,70 +136,70 @@ A console server is a device which provides remote access to the local consoles 
 
 **[Documentation](https://docs.netbox.dev/en/stable/models/dcim/powerport/)**
 
-A power port is a device component which draws power from some external source (e.g. an upstream power outlet), and generally represents a power supply internal to a device.
+Порт питания - это компонент устройства, который получает питание от какого-либо внешнего источника (например, от сетевой розетки в шкафу) и, как правило, представляет собой внутренний источник питания устройства.
 
 - `name`: Имя
 - `label`: Метка
 - `type`: тип записи slug (массив)
-- `maximum_draw`: The port's maximum power draw, in watts (optional)
-- `allocated_draw`: The port's allocated power draw, in watts (optional)
+- `maximum_draw`: Максимальная потребляемая мощность порта в ваттах (опционально)
+- `allocated_draw`: Потребляемая мощность порта, Вт (опционально)
 
 #### Power Outlets
 
 **[Documentation](https://docs.netbox.dev/en/stable/models/dcim/poweroutlet/)**
 
-Power outlets represent the outlets on a power distribution unit (PDU) or other device that supplies power to dependent devices. Each power port may be assigned a physical type, and may be associated with a specific feed leg (where three-phase power is used) and/or a specific upstream power port. This association can be used to model the distribution of power within a device.
+Розетки питания представляют собой розетки на блоке распределения питания (PDU) или другом устройстве, которое подает питание на зависимые устройства. Каждому порту питания может быть присвоен физический тип, и он может быть связан с определенным участком питания (где используется трехфазное питание) и/или с определенным входным портом питания. Эта связь может быть использована для моделирования распределения мощности внутри устройства.
 
 - `name`: Имя
 - `label`: Метка
 - `type`: тип записи slug (массив)
-- `power_port`: The name of the power port on the device which powers this outlet (optional)
-- `feed_leg`: The phase (leg) of power to which this outlet is mapped; A, B, or C (optional)
+- `power_port`: Название порта питания на устройстве, от которого питается данная розетка (необязательно)
+- `feed_leg`: Фаза (ответвление) питания, к которой подключена данная розетка; A, B или C (опционально)
 
 #### Interfaces
 
 **[Documentation](https://docs.netbox.dev/en/stable/models/dcim/interface/)**
 
-Interfaces in NetBox represent network interfaces used to exchange data with connected devices. On modern networks, these are most commonly Ethernet, but other types are supported as well. IP addresses and VLANs can be assigned to interfaces.
+Iинтерфейсы в NetBox представляют собой сетевые интерфейсы, используемые для обмена данными с подключенными устройствами. В современных сетях чаще всего используется Ethernet, но поддерживаются и другие типы. Интерфейсам могут быть назначены IP-адреса и VLAN.
 
 - `name`: Имя
 - `label`: Метка
-- `type`: Interface type slug (Array)
-- `mgmt_only`: A boolean which indicates whether this interface is used for management purposes only (default: false)
+- `type`: Тип интерфейса slug (массив)
+- `mgmt_only`: Логическое значение, указывающее, используется ли этот интерфейс только для целей управления (по умолчанию: false).
 
 #### Front Ports
 
 **[Documentation](https://docs.netbox.dev/en/stable/models/dcim/frontport/)**
 
-Front ports are pass-through ports which represent physical cable connections that comprise part of a longer path. For example, the ports on the front face of a UTP patch panel would be modeled in NetBox as front ports. Each port is assigned a physical type, and must be mapped to a specific rear port on the same device. A single rear port may be mapped to multiple front ports, using numeric positions to annotate the specific alignment of each.
+Передние порты - это сквозные порты, которые представляют собой физические кабельные соединения, составляющие часть более длинного пути. Например, порты на передней панели коммутационной панели UTP могут быть смоделированы в NetBox как передние порты. Каждому порту присваивается физический тип, и он должен быть сопоставлен с определенным задним портом на одном и том же устройстве. Один задний порт может быть сопоставлен с несколькими передними портами, используя числовые позиции для указания конкретного расположения каждого из них.
 
 - `name`: Имя
 - `label`: Метка
 - `type`: тип записи slug (массив)
-- `rear_port`: The name of the rear port on this device to which the front port maps
-- `rear_port_position`: The corresponding position on the mapped rear port (default: 1)
+- `rear_port`: Название заднего порта на данном устройстве, к которому подключен передний порт
+- `rear_port_position`: Соответствующее положение на подключенном заднем порту (по умолчанию: 1)
 
 #### Rear Ports
 
 **[Documentation](https://docs.netbox.dev/en/stable/models/dcim/rearport/)**
 
-Like front ports, rear ports are pass-through ports which represent the continuation of a path from one cable to the next. Each rear port is defined with its physical type and a number of positions: Rear ports with more than one position can be mapped to multiple front ports. This can be useful for modeling instances where multiple paths share a common cable (for example, six discrete two-strand fiber connections sharing a 12-strand MPO cable).
+Как и передние порты, задние порты являются сквозными и представляют собой продолжение пути от одного кабеля к другому. Каждый задний порт определяется своим физическим типом и количеством позиций: задние порты с несколькими позициями могут быть сопоставлены с несколькими передними портами. Это может быть полезно для моделирования случаев, когда несколько трактов используют общий кабель (например, шесть дискретных двухжильных оптоволоконных соединений используют 12-жильный кабель MPO).
 
 - `name`: Имя
 - `label`: Метка
 - `type`: тип записи slug (массив)
-- `positions`: The number of front ports that can map to this rear port (default: 1)
-- `poe`: Does this port access/provide POE? (Boolean)
+- `positions`: Количество передних портов, которые могут быть подключены к этому заднему порту (по умолчанию: 1)
+- `poe`: Обеспечивает ли этот порт доступ к POE? (Логическое значение)
 
 #### Module Bays
 
 **[Documentation](https://docs.netbox.dev/en/stable/models/dcim/modulebay/)**
 
-Module bays represent a space or slot within a device in which a field-replaceable module may be installed. A common example is that of a chassis-based switch such as the Cisco Nexus 9000 or Juniper EX9200. Modules in turn hold additional components that become available to the parent device.
+Отсеки для модулей представляют собой пространство или слот внутри устройства, в который может быть установлен модуль, заменяемый в полевых условиях. Распространенным примером является коммутатор на базе шасси, такой как Cisco Nexus 9000 или Juniper EX9200. Модули, в свою очередь, содержат дополнительные компоненты, которые становятся доступными для родительского устройства.
 
 - `name`: Имя
 - `label`: Метка
-- `position`: The alphanumeric position in which this module bay is situated within the parent device. When creating module components, the string `{module}` in the component name will be replaced with the module bay's `position`. See the [NetBox Documentation](https://docs.netbox.dev/en/stable/models/dcim/moduletype/#automatic-component-renaming) for more details.
+- `position`: Буквенно-цифровое положение, в котором этот модульный отсек расположен на родительском устройстве. При создании компонентов модуля строка "{module}" в названии компонента будет заменена на `положение` модульного отсека. Более подробную информацию смотрите в [NetBox Documentation](https://docs.netbox.dev/en/stable/models/dcim/moduletype/#automatic-component-renaming).
 
 #### Device Bays
 
