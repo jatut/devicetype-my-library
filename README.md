@@ -2,14 +2,37 @@
 
 ## About this Library
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Эта библиотека предназначена для заполнения типов устройств в [NetBox](https://github.com/netbox-community/netbox). Она содержит набор определений типов устройств, выраженных в формате YAML и упорядоченных по производителю. Каждый файл представляет отдельный тип физического устройства (например, марку и модель). Эти определения можно загрузить в NetBox вместо создания определений новых типов устройств вручную.
 
 
 Если вы хотите внести свой вклад в эту библиотеку, пожалуйста, прочитайте нашу [руководство по содействию](CONTRIBUTING.md) перед отправкой контента.
 
-**Note: As of March 2023 Netbox-Device-Type-Library-Import has been brought into the NetBox Community Organization. We will work to get this fully supported soon.**
-If you would like to automate the import of these devicetype template files, there is a NetBox Community ~~**community based**~~ python script
-that will check for duplicates, allow you to selectively import vendors, etc. available here [netbox-community/Device-Type-Library-Import](https://github.com/netbox-community/Device-Type-Library-Import). ~~**Note**: This is not related to NetBox in any official way and you will not get support for it here.~~
+**Примечание. С марта 2023 года Netbox-Device-Type-Library-Import был перенесен в организацию сообщества NetBox. Мы будем работать над тем, чтобы в ближайшее время обеспечить полную поддержку.**
+
+Если вы хотите автоматизировать импорт этих файлов шаблонов типов устройств, существует скрипт Python на базе сообщества NetBox Community ~~**community based**~~, который будет проверять наличие дубликатов, позволит вам выборочно импортировать поставщиков и т. д., доступный здесь netbox-community/Device-Type-Library- Импорт. Примечание. Это никаким официальным образом не связано с NetBox, и вы не получите здесь поддержки.If you would like to automate the import of these devicetype template files, there is a NetBox Community ~~**community based**~~ python scriptthat will check for duplicates, allow you to selectively import vendors, etc. available here [netbox-community/Device-Type-Library-Import](https://github.com/netbox-community/Device-Type-Library-Import). ~~**Note**: This is not related to NetBox in any official way and you will not get support for it here.~~
 
 ## Device Type Definitions
 
