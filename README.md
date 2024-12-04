@@ -77,9 +77,9 @@
 - `weight`: Число, представляющее числовое значение веса. Должно быть кратно 0,01 (2 знака после запятой). (**По умолчанию: Нет**)
   - Тип: Номер
   - Значение: должно быть кратно 0,01
-- `weight_unit`: A string defining the unit of measurement. It must be one of the supported values. (**Default: None**)
+- `weight_unit`: Строка, определяющая единицу измерения. Это должно быть одно из поддерживаемых значений. (**По умолчанию: Нет**)
   - Тип: Строка
-  - Value: Enumerated Options
+  - Значение: Перечисленные ниже параметры
     - kg
     - g
     - lb
@@ -91,13 +91,12 @@
     weight_unit: lb
     ```
 
-For further detail on these attributes and those listed below, please reference the
-[schema definitions](schema/) and the [Component Definitions](#component-definitions) below.
+Для получения более подробной информации об этих и перечисленных ниже атрибутах, пожалуйста, обратитесь к
+[определениям схемы](schema/) и [Определениям компонентов](#component-definitions), приведенным ниже.
 
-### Component Definitions
+### Определения компонентов
 
-Valid component types are listed below. Each type of component must declare a list of the individual component templates
-to be added.
+Ниже перечислены допустимые типы компонентов. Для каждого типа компонента необходимо указать список шаблонов отдельных компонентов, которые будут добавлены.
 
 - [console-ports](#console-ports "Availible in NetBox 2 and later")
 - [console-server-ports](#console-server-ports "Availible in NetBox 2.2 and later")
