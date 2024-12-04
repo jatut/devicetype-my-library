@@ -24,8 +24,8 @@
 каждого производителя. Перед всеми слитками должно быть указано название производителя с тире, пожалуйста, смотрите пример ниже.
   - Тип: Строка
   - Шаблон: `"^[-a-zA-Z0-9_]+$"`. Должны совпадать со следующими символами: `-`, `_`, прописными или строчными буквами от `a` до `z`, цифрами от `0` до `9`.
-  
-:test_tube: Example:
+
+:test_tube: Пример:
 
   ```yaml
   manufacturer: Dell
@@ -34,6 +34,7 @@
   ```
 
 The following fields may **optionally** be declared:
+**При необходимости** могут быть объявлены следующие поля:
 
 - `part_number`: An alternative representation of the model number (e.g. a SKU). (**Default: None**)
   - Type: String
