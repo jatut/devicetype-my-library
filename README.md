@@ -199,15 +199,15 @@ Iинтерфейсы в NetBox представляют собой сетевы
 
 - `name`: Имя
 - `label`: Метка
-- `position`: Буквенно-цифровое положение, в котором этот модульный отсек расположен на родительском устройстве. При создании компонентов модуля строка "{module}" в названии компонента будет заменена на `положение` модульного отсека. Более подробную информацию смотрите в [NetBox Documentation](https://docs.netbox.dev/en/stable/models/dcim/moduletype/#automatic-component-renaming).
+- `position`: Буквенно-цифровое положение, в котором этот модульный отсек расположен на родительском устройстве. При создании компонентов модуля строка "{module}" в названии компонента будет заменена на `position` модульного отсека. Более подробную информацию смотрите в [NetBox Documentation](https://docs.netbox.dev/en/stable/models/dcim/moduletype/#automatic-component-renaming).
 
 #### Device Bays
 
 **[Documentation](https://docs.netbox.dev/en/stable/models/dcim/devicebay/)**
 
-Device bays represent a space or slot within a parent device in which a child device may be installed. For example, a 2U parent chassis might house four individual blade servers. The chassis would appear in the rack elevation as a 2U device with four device bays, and each server within it would be defined as a 0U device installed in one of the device bays. Child devices do not appear within rack elevations or count as consuming rack units.
+Отсеки для устройств представляют собой пространство или слот в родительском устройстве, в котором может быть установлено дочернее устройство. Например, в родительском корпусе размером 2U могут размещаться четыре отдельных блейд-сервера. Шасси будет отображаться на уровне стойки как устройство размером 2U с четырьмя отсеками для устройств, а каждый сервер в нем будет определяться как устройство размером 0U, установленное в одном из отсеков для устройств. Дочерние устройства не отображаются на уровнях стойки и не учитываются как потребляющие устройства в стойке.
 
-Child devices are first-class Devices in their own right: That is, they are fully independent managed entities which don't share any control plane with the parent. Just like normal devices, child devices have their own platform (OS), role, tags, and components. LAG interfaces may not group interfaces belonging to different child devices.
+Дочерние устройства сами по себе являются первоклассными устройствами: это полностью независимые управляемые объекты, которые не имеют общего уровня управления с родительским устройством. Как и обычные устройства, дочерние устройства имеют свою собственную платформу (ОС), роли, теги и компоненты. Интерфейсы LAG не могут группировать интерфейсы, принадлежащие разным дочерним устройствам.
 
 - `name`: Имя
 - `label`: Метка
@@ -216,14 +216,14 @@ Child devices are first-class Devices in their own right: That is, they are full
 
 **[Documentation](https://docs.netbox.dev/en/stable/models/dcim/inventoryitem/)**
 
-Inventory items represent hardware components installed within a device, such as a power supply or CPU or line card. They are intended to be used primarily for inventory purposes.
+Инвентарные позиции представляют собой аппаратные компоненты, установленные в устройстве, такие как блок питания, центральный процессор или сетевая плата. Они предназначены в первую очередь для целей инвентаризации.
 
-Inventory items are hierarchical in nature, such that any individual item may be designated as the parent for other items. For example, an inventory item might be created to represent a line card which houses several SFP optics, each of which exists as a child item within the device. An inventory item may also be associated with a specific component within the same device. For example, you may wish to associate a transceiver with an interface.
+Элементы инвентаря являются иерархическими по своей природе, так что любой отдельный элемент может быть назначен родительским для других элементов. Например, элемент инвентаря может быть создан для представления линейной карточки, в которой содержится несколько оптических элементов SFP, каждый из которых существует как дочерний элемент в устройстве. Элемент инвентаря также может быть связан с определенным компонентом в том же устройстве. Например, вы можете захотеть связать трансивер с интерфейсом.
 
 - `name`: Имя
 - `label`: Метка
-- `manufacturer`: The name of the manufacturer which produces this item
-- `part_id`: The part ID assigned by the manufacturer
+- `manufacturer`: Название производителя, который производит данное изделие
+- `part_id`: Идентификатор ID детали, присвоенный производителем
 
 ## Data Validation / Commit Quality Checks
 
