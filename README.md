@@ -11,7 +11,7 @@
 Если вы хотите автоматизировать импорт этих файлов шаблонов типов устройств, существует скрипт Python на базе сообщества NetBox Community ~~**community based**~~, который будет проверять наличие дубликатов, 
 позволит вам выборочно импортировать поставщиков и т. д., доступный здесь [netbox-community/Device-Type-Library-Import](https://github.com/netbox-community/Device-Type-Library-Import).
  ~~** Примечание:** Это никаким официальным образом не связано с NetBox, и вы не получите здесь поддержки.~~
- 
+
 ## Device Type Definitions
 
 Each definition **must** include at minimum the following fields:
