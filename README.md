@@ -33,59 +33,58 @@
   slug: dell-poweredge-r6515
   ```
 
-The following fields may **optionally** be declared:
 **При необходимости** могут быть объявлены следующие поля:
 
-- `part_number`: An alternative representation of the model number (e.g. a SKU). (**Default: None**)
-  - Type: String
-  - :test_tube: Example: `part_number: D109-C3`
-- `u_height`: The height of the device type in rack units. Increments of 0.5U are supported. (**Default: 1**)
-  - Type: number (minimum of `0`, multiple of `0.5`)
-  - :test_tube: Example: `u_height: 12.5`
-- `is_full_depth`: A boolean which indicates whether the device type consumes both the front and rear rack faces. (**Default: true**)
-  - Type: Boolean
-  - :test_tube: Example: `is_full_depth: false`
-- `airflow`: A declaration of the airflow pattern for the device. (**Default: None**)
-  - Type: String
-  - Options:
+- `part_number`: Альтернативное представление номера модели (например, артикул). (**По умолчанию: Нет**)
+  - Тип: Строка
+  - :test_tube: Пример: `part_number: D109-C3`
+- `u_height`: Высота типа устройства в стойках. Поддерживаются значения с шагом 0,5U. (**По умолчанию: 1**)
+  - Тип: число (минимум `0`, кратное `0,5`)
+  - :test_tube: Пример: `u_height: 12.5`
+- `is_full_depth`: Логическое значение, указывающее, используется ли для данного типа устройства как передняя, так и задняя поверхности стойки. (** По умолчанию: true**)
+  - Тип: Логический
+  - :test_tube: Пример: `is_full_depth: false`
+- `airflow`: Описание схемы воздушного потока для устройства. (**По умолчанию: Нет**)
+  - Тип: Строка
+  - Опции:
     - `front-to-rear`
     - `rear-to-front`
     - `left-to-right`
     - `right-to-left`
-    - `side-to-rear`
+    - `side-to-rear`  
     - `passive`
-  - :test_tube: Example: `airflow: side-to-rear`
-- `front_image`: Indicates that this device has a front elevation image within the [elevation-images](elevation-images/) folder. (**Default: None**)
-  - NOTE: The elevation images folder requires the same folder name as this device. The file name must also adhere to <VALUE_IN_SLUG>.front.<acceptable_format>
-  - Type: Boolean
-  - :test_tube: Example: `front_image: True`
-- `rear_image`: Indicates that this device has a rear elevation image within the [elevation-images](elevation-images/) folder. (**Default: None**)
-  - NOTE: The elevation images folder requires the same folder name as this device. The file name must also adhere to <VALUE_IN_SLUG>.rear.<acceptable_format>
-  - Type: Boolean
-  - :test_tube: Example: `rear_image: True`
-- `subdevice_role`: Indicates that this is a `parent` or `child` device. (**Default: None**)
-  - Type: String
-  - Options:
+  - :test_tube: Пример: `airflow: side-to-rear`
+- `front_image`: Указывает, что у этого устройства есть изображение  спереди в папке [elevation-images] (elevation-images/). (**По умолчанию: None(Нет)**)
+  - ПРИМЕЧАНИЕ: Для папки с изображениями высот требуется то же имя папки, что и для этого устройства. Имя файла также должно совпадать с <VALUE_IN_SLUG>.front.<acceptable_format>
+  - Тип: Логический
+  - :test_tube: Пример: `front_image: True`
+- `rear_image`: Указывает, что у этого устройства есть изображение  сзади в папке [elevation-images] (elevation-images/). (**По умолчанию: Нет**)
+  - ПРИМЕЧАНИЕ: Для папки с изображениями высот требуется то же имя папки, что и для этого устройства. Имя файла также должно совпадать с <VALUE_IN_SLUG>.rear.<acceptable_format>
+  - Тип: Логический
+  - :test_tube: Пример: `rear_image: True`
+- `subdevice_role`: Указывает, что это `parent`(родительское) или `child`(дочернее) устройство. (**По умолчанию: None(Нет)**)
+  - Тип: Строка
+  - Опции:
     - `parent`
     - `child`
-  - :test_tube: Example: `subdevice_role: parent`
-- `comments`: A string field which allows for comments to be added to the device. (**Default: None**)
-  - Type: String
-  - :test_tube: Example: `comments: This is a comment that will appear on all NetBox devices of this type`
-- `is_powered`: A boolean which indicates whether the device type does not take power. This is mainly used as a workaround for validation testing on non-devices (i.e. rackmount kits for mounting desktop devices) (**Default: True**)
-  - Type: Boolean
-  - :test_tube: Example: `is_powered: false`
-- `weight`: A number representing the numeric weight value. Must be a multiple of 0.01 (2 decimal places). (**Default: None**)
-  - Type: Number
-  - Value: must be a multiple of 0.01
+  - :test_tube: Пример: `subdevice_role: parent`
+- `comments`: Строковое поле, позволяющее добавлять комментарии к устройству. (**По умолчанию: Нет**)
+  - Тип: Строка
+  - :test_tube: Пример: `comments: This is a comment that will appear on all NetBox devices of this type`
+- `is_powered`: Логическое значение, указывающее, не потребляет ли питание устройство данного типа. В основном используется в качестве обходного пути для проверки работоспособности устройств, не являющихся устройствами (например, комплектов для монтажа в стойку для настольных устройств) (** По умолчанию: True**)
+  - Тип: Логический
+  - :test_tube: Пример: `is_powered: false`
+- `weight`: Число, представляющее числовое значение веса. Должно быть кратно 0,01 (2 знака после запятой). (**По умолчанию: Нет**)
+  - Тип: Номер
+  - Значение: должно быть кратно 0,01
 - `weight_unit`: A string defining the unit of measurement. It must be one of the supported values. (**Default: None**)
-  - Type: String
+  - Тип: Строка
   - Value: Enumerated Options
     - kg
     - g
     - lb
     - oz
-  - :test_tube: Example:
+  - :test_tube: Пример:
 
     ```yaml
     weight: 12.21
