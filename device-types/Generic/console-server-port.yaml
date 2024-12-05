@@ -35,5 +35,5 @@ interfaces:
     mgmt_only: true
   - name: eth1
     type: 1000base-t
-    # comments: Общие носители (вы можете использовать 1 из 2 портов ** с ** этим именем. 1-1000Base-T & Other-1000BASE-X-SFP.)
+    # comments: shared media (You can use 1 of the 2 ports **WITH** this name. 1 is 1000base-t & the other is 1000base-x-sfp.)
     #mgmt_only: true
