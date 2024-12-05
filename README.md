@@ -229,17 +229,17 @@ Iинтерфейсы в NetBox представляют собой сетевы
 
 There are two ways this repo focuses on keeping quality device-type definitions:
 
-- **Pre-Commit Checks** - Optional, but **highly recommended**, for helping to identify simple issues before committing. (trailing-whitespace, end-of-file-fixer, check-yaml, yamlfmt, yamllint)
-  - Installation
-    - Virtual Environment Route
-      - It is recommended to create a virtual env for your repo (`python3 -m venv venv`)
-      - Install the required pip packages (`pip install -r requirements.txt`)
-      - Continue to the "Install `pre-commit` Hooks"
-    - `pre-commit` Only Route
+- **Предварительные проверки** - Необязательно, но **настоятельно рекомендуется**, для помощи в выявлении простых вопросов перед совершением.(Trainling-Whitespace, фиксера, Check-yaml, Yamlfmt, Yamllint)
+  - Установка
+    - Виртуальная среда маршрута
+      - Рекомендуется создать виртуальную Env для вашего репо (`python3 -m venv venv`)
+      - Установите необходимые пакеты PIP (`pip install -r requirements.txt`)
+      - Продолжить до "Install `pre-commit` Hooks"
+    - `pre-commit` Только маршрут
       - [Install pre-commit](https://pre-commit.com/#install) (`pip install pre-commit`)
-    - Install `pre-commit` Hooks
-      - To install the pre-commit script: `pre-commit install`
-  - Usage & Useful `pre-commit` Commands
+    - Установите `pre-commi' крючки
+      - Чтобы установить сценарий перед коммитацией: `pre-commit install`
+  - Использование и полезные команды `pre-commit
     - After staging your files with `git`, to run the pre-commit script on changed files: `pre-commit run`
     - To run the pre-commit script on all files: `pre-commit run --all`
     - To uninstall the pre-commit script: `pre-commit uninstall`

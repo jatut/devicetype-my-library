@@ -1,0 +1,11 @@
+version: 0.16.8
+files:
+  - url: RelaGit-linux.deb
+    sha512: qYwy4iA1945BVicDvR/gtFc4HLtE63xw2+rOaIfczz+I9A4Ec6+FVQMuY5JJfIkD5ienBzN53MEBMsrPf4Go4Q==
+    size: 82960268
+  - url: RelaGit-linux.rpm
+    sha512: h9P6rmK4hBGihvR7zOAUufC3bqcHsG2HAXiDOH2xnEGkVTGsbADk6NVnD/zK+y9ltDUSKSH2Ns+8sSK5wpuopg==
+    size: 83384841
+path: RelaGit-linux.deb
+sha512: qYwy4iA1945BVicDvR/gtFc4HLtE63xw2+rOaIfczz+I9A4Ec6+FVQMuY5JJfIkD5ienBzN53MEBMsrPf4Go4Q==
+releaseDate: '2024-10-17T20:31:55.623Z'
