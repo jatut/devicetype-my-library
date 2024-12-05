@@ -1,0 +1,32 @@
+---
+manufacturer: Generic
+model: USB LAN HUB 8ports
+slug: generic-usb-lan-hub-8ports
+part_number: usb-lan-hub-8ports
+u_height: 1
+is_full_depth: false
+comments:
+interfaces:
+  - name: ETH
+    type: 1000base-t
+console-ports:
+  - name: USB_1
+    type: usb-a
+  - name: USB_2
+    type: usb-a
+  - name: USB_3
+    type: usb-a
+  - name: USB_4
+    type: usb-a
+  - name: USB_5
+    type: usb-a
+  - name: USB_6
+    type: usb-a
+  - name: USB_7
+    type: usb-a
+  - name: USB_8
+    type: usb-a
+power-ports:
+  - name: PSU
+    type: dc-terminal
+    maximum_draw: 20
