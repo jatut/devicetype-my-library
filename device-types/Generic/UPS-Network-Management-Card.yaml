@@ -1,9 +1,0 @@
----
-manufacturer: Generic
-model: UPS Network Management Card
-#slug: generic-ups-network-management-card
-comments: UPS Network Management Card 
-interfaces:
-  - name: ETH-1
-    type: 100base-tx
-    mgmt_only: true
