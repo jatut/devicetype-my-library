@@ -2,30 +2,32 @@
 
 ## About this Library
 
-Эта библиотека предназначена для заполнения типов устройств в [NetBox](https://github.com/netbox-community/netbox). Она содержит набор определений типов устройств, выраженных в формате YAML и упорядоченных по производителю. Каждый файл представляет отдельный тип физического устройства (например, марку и модель). Эти определения можно загрузить в NetBox вместо создания определений новых типов устройств вручную.
+This library is intended to be used for populating device types in [NetBox](https://github.com/netbox-community/netbox).
+It contains a set of device type definitions expressed in YAML and arranged by manufacturer. Each file represents a
+discrete physical device type (e.g. make and model). These definitions can be loaded into NetBox instead of creating
+new device type definitions manually.
 
+If you would like to contribute to this library, please read through our [contributing guide](CONTRIBUTING.md) before
+submitting content.
 
-Если вы хотите внести свой вклад в эту библиотеку, пожалуйста, прочитайте нашу [руководство по содействию](CONTRIBUTING.md) перед отправкой контента.
+**Note: As of March 2023 Netbox-Device-Type-Library-Import has been brought into the NetBox Community Organization. We will work to get this fully supported soon.**
+If you would like to automate the import of these devicetype template files, there is a NetBox Community ~~**community based**~~ python script
+that will check for duplicates, allow you to selectively import vendors, etc. available here [netbox-community/Device-Type-Library-Import](https://github.com/netbox-community/Device-Type-Library-Import). ~~**Note**: This is not related to NetBox in any official way and you will not get support for it here.~~
 
-**Примечание. С марта 2023 года Netbox-Device-Type-Library-Import был перенесен в организацию сообщества NetBox. Мы будем работать над тем, чтобы в ближайшее время обеспечить полную поддержку.**
-Если вы хотите автоматизировать импорт этих файлов шаблонов типов устройств, существует скрипт Python на базе сообщества NetBox Community ~~**community based**~~, который будет проверять наличие дубликатов, 
-позволит вам выборочно импортировать поставщиков и т. д., доступный здесь [netbox-community/Device-Type-Library-Import](https://github.com/netbox-community/Device-Type-Library-Import).
- ~~** Примечание:** Это никаким официальным образом не связано с NetBox, и вы не получите здесь поддержки.~~
+## Device Type Definitions
 
-## Определения типа устройства
+Each definition **must** include at minimum the following fields:
 
-Каждое определение **должно** включать, как минимум, следующие поля:
+- `manufacturer`: The name of the manufacturer which produces this device type.
+  - Type: String
+- `model`: The model number of the device type. This must be unique per manufacturer.
+  - Type: String
+- `slug`: A URL-friendly representation of the model number. Like the model number, this must be unique per
+  manufacturer. All slugs should have the manufacturers name prepended to it with a dash, please see the example below.
+  - Type: String
+  - Pattern: `"^[-a-zA-Z0-9_]+$"`. Must match the following characters: `-`, `_`, Uppercase or Lowercase `a` to `z`, Numbers `0` to `9`.
 
-- `manufacturer`: Название производителя, выпускающего данный тип устройства.
-  - Тип: Строка
-- `model`: Номер модели, соответствующий типу устройства. Он должен быть уникальным для каждого производителя.
-  - Тип: Строка
-- `slug`: Удобное для использования в URL-адресе представление номера модели. Как и номер модели, оно должно быть уникальным для 
-каждого производителя. Перед всеми слитками должно быть указано название производителя с тире, пожалуйста, смотрите пример ниже.
-  - Тип: Строка
-  - Шаблон: `"^[-a-zA-Z0-9_]+$"`. Должны совпадать со следующими символами: `-`, `_`, прописными или строчными буквами от `a` до `z`, цифрами от `0` до `9`.
-
-:test_tube: Пример:
+:test_tube: Example:
 
   ```yaml
   manufacturer: Dell
@@ -33,70 +35,71 @@
   slug: dell-poweredge-r6515
   ```
 
-**При необходимости** могут быть объявлены следующие поля:
+The following fields may **optionally** be declared:
 
-- `part_number`: Альтернативное представление номера модели (например, артикул). (**По умолчанию: Нет**)
-  - Тип: Строка
-  - :test_tube: Пример: `part_number: D109-C3`
-- `u_height`: Высота типа устройства в стойках. Поддерживаются значения с шагом 0,5U. (**По умолчанию: 1**)
-  - Тип: число (минимум `0`, кратное `0,5`)
-  - :test_tube: Пример: `u_height: 12.5`
-- `is_full_depth`: Логическое значение, указывающее, используется ли для данного типа устройства как передняя, так и задняя поверхности стойки. (** По умолчанию: true**)
-  - Тип: Логический
-  - :test_tube: Пример: `is_full_depth: false`
-- `airflow`: Описание схемы воздушного потока для устройства. (**По умолчанию: Нет**)
-  - Тип: Строка
-  - Опции:
+- `part_number`: An alternative representation of the model number (e.g. a SKU). (**Default: None**)
+  - Type: String
+  - :test_tube: Example: `part_number: D109-C3`
+- `u_height`: The height of the device type in rack units. Increments of 0.5U are supported. (**Default: 1**)
+  - Type: number (minimum of `0`, multiple of `0.5`)
+  - :test_tube: Example: `u_height: 12.5`
+- `is_full_depth`: A boolean which indicates whether the device type consumes both the front and rear rack faces. (**Default: true**)
+  - Type: Boolean
+  - :test_tube: Example: `is_full_depth: false`
+- `airflow`: A declaration of the airflow pattern for the device. (**Default: None**)
+  - Type: String
+  - Options:
     - `front-to-rear`
     - `rear-to-front`
     - `left-to-right`
     - `right-to-left`
-    - `side-to-rear`  
+    - `side-to-rear`
     - `passive`
-  - :test_tube: Пример: `airflow: side-to-rear`
-- `front_image`: Указывает, что у этого устройства есть изображение  спереди в папке [elevation-images] (elevation-images/). (**По умолчанию: None(Нет)**)
-  - ПРИМЕЧАНИЕ: Для папки с изображениями высот требуется то же имя папки, что и для этого устройства. Имя файла также должно совпадать с <VALUE_IN_SLUG>.front.<acceptable_format>
-  - Тип: Логический
-  - :test_tube: Пример: `front_image: True`
-- `rear_image`: Указывает, что у этого устройства есть изображение  сзади в папке [elevation-images] (elevation-images/). (**По умолчанию: Нет**)
-  - ПРИМЕЧАНИЕ: Для папки с изображениями высот требуется то же имя папки, что и для этого устройства. Имя файла также должно совпадать с <VALUE_IN_SLUG>.rear.<acceptable_format>
-  - Тип: Логический
-  - :test_tube: Пример: `rear_image: True`
-- `subdevice_role`: Указывает, что это `parent`(родительское) или `child`(дочернее) устройство. (**По умолчанию: None(Нет)**)
-  - Тип: Строка
-  - Опции:
+  - :test_tube: Example: `airflow: side-to-rear`
+- `front_image`: Indicates that this device has a front elevation image within the [elevation-images](elevation-images/) folder. (**Default: None**)
+  - NOTE: The elevation images folder requires the same folder name as this device. The file name must also adhere to <VALUE_IN_SLUG>.front.<acceptable_format>
+  - Type: Boolean
+  - :test_tube: Example: `front_image: True`
+- `rear_image`: Indicates that this device has a rear elevation image within the [elevation-images](elevation-images/) folder. (**Default: None**)
+  - NOTE: The elevation images folder requires the same folder name as this device. The file name must also adhere to <VALUE_IN_SLUG>.rear.<acceptable_format>
+  - Type: Boolean
+  - :test_tube: Example: `rear_image: True`
+- `subdevice_role`: Indicates that this is a `parent` or `child` device. (**Default: None**)
+  - Type: String
+  - Options:
     - `parent`
     - `child`
-  - :test_tube: Пример: `subdevice_role: parent`
-- `comments`: Строковое поле, позволяющее добавлять комментарии к устройству. (**По умолчанию: Нет**)
-  - Тип: Строка
-  - :test_tube: Пример: `comments: This is a comment that will appear on all NetBox devices of this type`
-- `is_powered`: Логическое значение, указывающее, не потребляет ли питание устройство данного типа. В основном используется в качестве обходного пути для проверки работоспособности устройств, не являющихся устройствами (например, комплектов для монтажа в стойку для настольных устройств) (** По умолчанию: True**)
-  - Тип: Логический
-  - :test_tube: Пример: `is_powered: false`
-- `weight`: Число, представляющее числовое значение веса. Должно быть кратно 0,01 (2 знака после запятой). (**По умолчанию: Нет**)
-  - Тип: Номер
-  - Значение: должно быть кратно 0,01
-- `weight_unit`: Строка, определяющая единицу измерения. Это должно быть одно из поддерживаемых значений. (**По умолчанию: Нет**)
-  - Тип: Строка
-  - Значение: Перечисленные ниже параметры
+  - :test_tube: Example: `subdevice_role: parent`
+- `comments`: A string field which allows for comments to be added to the device. (**Default: None**)
+  - Type: String
+  - :test_tube: Example: `comments: This is a comment that will appear on all NetBox devices of this type`
+- `is_powered`: A boolean which indicates whether the device type does not take power. This is mainly used as a workaround for validation testing on non-devices (i.e. rackmount kits for mounting desktop devices) (**Default: True**)
+  - Type: Boolean
+  - :test_tube: Example: `is_powered: false`
+- `weight`: A number representing the numeric weight value. Must be a multiple of 0.01 (2 decimal places). (**Default: None**)
+  - Type: Number
+  - Value: must be a multiple of 0.01
+- `weight_unit`: A string defining the unit of measurement. It must be one of the supported values. (**Default: None**)
+  - Type: String
+  - Value: Enumerated Options
     - kg
     - g
     - lb
     - oz
-  - :test_tube: Пример:
+  - :test_tube: Example:
 
     ```yaml
     weight: 12.21
     weight_unit: lb
     ```
 
-Для получения более подробной информации об этих и перечисленных ниже атрибутах, пожалуйста, обратитесь к
-[определениям схемы](schema/) и [Определениям компонентов](#component-definitions), приведенным ниже.
+For further detail on these attributes and those listed below, please reference the
+[schema definitions](schema/) and the [Component Definitions](#component-definitions) below.
 
-### Определения компонентов
+### Component Definitions
 
-Ниже перечислены допустимые типы компонентов. Для каждого типа компонента необходимо указать список шаблонов отдельных компонентов, которые будут добавлены.
+Valid component types are listed below. Each type of component must declare a list of the individual component templates
+to be added.
 
 - [console-ports](#console-ports "Availible in NetBox 2 and later")
 - [console-server-ports](#console-server-ports "Availible in NetBox 2.2 and later")
@@ -109,137 +112,137 @@
 - [device-bays](#device-bays "Availible in all versions of NetBox")
 - [inventory-items](#inventory-items "Availible in NetBox 3.2 and later")
 
-Ниже перечислены доступные поля для каждого типа компонента.
+The available fields for each type of component are listed below.
 
 #### Console Ports
 
-**[Документация](https://docs.netbox.dev/en/stable/models/dcim/consoleport/)**
+**[Documentation](https://docs.netbox.dev/en/stable/models/dcim/consoleport/)**
 
-Консольный порт обеспечивает подключение к физической консоли устройства. Обычно он используется для временного доступа пользователя, физически находящегося рядом с устройством, или для удаленного внеполосного доступа, предоставляемого через сетевой консольный сервер.
+A console port provides connectivity to the physical console of a device. These are typically used for temporary access by someone who is physically near the device, or for remote out-of-band access provided via a networked console server.
 
-- `name`: Имя
-- `label`: Метка
-- `type`: тип записи slug (массив)
-- `poe`: Обеспечивает ли этот порт доступ к POE? (Логическое значение)
+- `name`: Name
+- `label`: Label
+- `type`: Port type slug (Array)
+- `poe`: Does this port access/provide POE? (Boolean)
 
 #### Console Server Ports
 
-**[Документация](https://docs.netbox.dev/en/stable/models/dcim/consoleserverport/)**
+**[Documentation](https://docs.netbox.dev/en/stable/models/dcim/consoleserverport/)**
 
-Консольный сервер - это устройство, которое обеспечивает удаленный доступ к локальным консолям подключенных устройств. Обычно они используются для обеспечения удаленного внеполосного доступа к сетевым устройствам и, как правило, для подключения к консольным портам.
+A console server is a device which provides remote access to the local consoles of connected devices. They are typically used to provide remote out-of-band access to network devices, and generally connect to console ports.
 
-- `name`: Имя
-- `label`: Метка
-- `type`: тип записи slug (массив)
+- `name`: Name
+- `label`: Label
+- `type`: Port type slug (Array)
 
 #### Power Ports
 
-**[Документация](https://docs.netbox.dev/en/stable/models/dcim/powerport/)**
+**[Documentation](https://docs.netbox.dev/en/stable/models/dcim/powerport/)**
 
-Порт питания - это компонент устройства, который получает питание от какого-либо внешнего источника (например, от сетевой розетки в шкафу) и, как правило, представляет собой внутренний источник питания устройства.
+A power port is a device component which draws power from some external source (e.g. an upstream power outlet), and generally represents a power supply internal to a device.
 
-- `name`: Имя
-- `label`: Метка
-- `type`: тип записи slug (массив)
-- `maximum_draw`: Максимальная потребляемая мощность порта в ваттах (опционально)
-- `allocated_draw`: Потребляемая мощность порта, Вт (опционально)
+- `name`: Name
+- `label`: Label
+- `type`: Port type slug (Array)
+- `maximum_draw`: The port's maximum power draw, in watts (optional)
+- `allocated_draw`: The port's allocated power draw, in watts (optional)
 
 #### Power Outlets
 
-**[Документация](https://docs.netbox.dev/en/stable/models/dcim/poweroutlet/)**
+**[Documentation](https://docs.netbox.dev/en/stable/models/dcim/poweroutlet/)**
 
-Розетки питания представляют собой розетки на блоке распределения питания (PDU) или другом устройстве, которое подает питание на зависимые устройства. Каждому порту питания может быть присвоен физический тип, и он может быть связан с определенным участком питания (где используется трехфазное питание) и/или с определенным входным портом питания. Эта связь может быть использована для моделирования распределения мощности внутри устройства.
+Power outlets represent the outlets on a power distribution unit (PDU) or other device that supplies power to dependent devices. Each power port may be assigned a physical type, and may be associated with a specific feed leg (where three-phase power is used) and/or a specific upstream power port. This association can be used to model the distribution of power within a device.
 
-- `name`: Имя
-- `label`: Метка
-- `type`: тип записи slug (массив)
-- `power_port`: Название порта питания на устройстве, от которого питается данная розетка (необязательно)
-- `feed_leg`: Фаза (ответвление) питания, к которой подключена данная розетка; A, B или C (опционально)
+- `name`: Name
+- `label`: Label
+- `type`: Port type slug (Array)
+- `power_port`: The name of the power port on the device which powers this outlet (optional)
+- `feed_leg`: The phase (leg) of power to which this outlet is mapped; A, B, or C (optional)
 
 #### Interfaces
 
-**[Документация](https://docs.netbox.dev/en/stable/models/dcim/interface/)**
+**[Documentation](https://docs.netbox.dev/en/stable/models/dcim/interface/)**
 
-Iинтерфейсы в NetBox представляют собой сетевые интерфейсы, используемые для обмена данными с подключенными устройствами. В современных сетях чаще всего используется Ethernet, но поддерживаются и другие типы. Интерфейсам могут быть назначены IP-адреса и VLAN.
+Interfaces in NetBox represent network interfaces used to exchange data with connected devices. On modern networks, these are most commonly Ethernet, but other types are supported as well. IP addresses and VLANs can be assigned to interfaces.
 
-- `name`: Имя
-- `label`: Метка
-- `type`: Тип интерфейса slug (массив)
-- `mgmt_only`: Логическое значение, указывающее, используется ли этот интерфейс только для целей управления (по умолчанию: false).
+- `name`: Name
+- `label`: Label
+- `type`: Interface type slug (Array)
+- `mgmt_only`: A boolean which indicates whether this interface is used for management purposes only (default: false)
 
 #### Front Ports
 
-**[Документация](https://docs.netbox.dev/en/stable/models/dcim/frontport/)**
+**[Documentation](https://docs.netbox.dev/en/stable/models/dcim/frontport/)**
 
-Передние порты - это сквозные порты, которые представляют собой физические кабельные соединения, составляющие часть более длинного пути. Например, порты на передней панели коммутационной панели UTP могут быть смоделированы в NetBox как передние порты. Каждому порту присваивается физический тип, и он должен быть сопоставлен с определенным задним портом на одном и том же устройстве. Один задний порт может быть сопоставлен с несколькими передними портами, используя числовые позиции для указания конкретного расположения каждого из них.
+Front ports are pass-through ports which represent physical cable connections that comprise part of a longer path. For example, the ports on the front face of a UTP patch panel would be modeled in NetBox as front ports. Each port is assigned a physical type, and must be mapped to a specific rear port on the same device. A single rear port may be mapped to multiple front ports, using numeric positions to annotate the specific alignment of each.
 
-- `name`: Имя
-- `label`: Метка
-- `type`: тип записи slug (массив)
-- `rear_port`: Название заднего порта на данном устройстве, к которому подключен передний порт
-- `rear_port_position`: Соответствующее положение на подключенном заднем порту (по умолчанию: 1)
+- `name`: Name
+- `label`: Label
+- `type`: Port type slug (Array)
+- `rear_port`: The name of the rear port on this device to which the front port maps
+- `rear_port_position`: The corresponding position on the mapped rear port (default: 1)
 
 #### Rear Ports
 
-**[Документация](https://docs.netbox.dev/en/stable/models/dcim/rearport/)**
+**[Documentation](https://docs.netbox.dev/en/stable/models/dcim/rearport/)**
 
-Как и передние порты, задние порты являются сквозными и представляют собой продолжение пути от одного кабеля к другому. Каждый задний порт определяется своим физическим типом и количеством позиций: задние порты с несколькими позициями могут быть сопоставлены с несколькими передними портами. Это может быть полезно для моделирования случаев, когда несколько трактов используют общий кабель (например, шесть дискретных двухжильных оптоволоконных соединений используют 12-жильный кабель MPO).
+Like front ports, rear ports are pass-through ports which represent the continuation of a path from one cable to the next. Each rear port is defined with its physical type and a number of positions: Rear ports with more than one position can be mapped to multiple front ports. This can be useful for modeling instances where multiple paths share a common cable (for example, six discrete two-strand fiber connections sharing a 12-strand MPO cable).
 
-- `name`: Имя
-- `label`: Метка
-- `type`: тип записи slug (массив)
-- `positions`: Количество передних портов, которые могут быть подключены к этому заднему порту (по умолчанию: 1)
-- `poe`: Обеспечивает ли этот порт доступ к POE? (Логическое значение)
+- `name`: Name
+- `label`: Label
+- `type`: Port type slug (Array)
+- `positions`: The number of front ports that can map to this rear port (default: 1)
+- `poe`: Does this port access/provide POE? (Boolean)
 
 #### Module Bays
 
-**[Документация](https://docs.netbox.dev/en/stable/models/dcim/modulebay/)**
+**[Documentation](https://docs.netbox.dev/en/stable/models/dcim/modulebay/)**
 
-Отсеки для модулей представляют собой пространство или слот внутри устройства, в который может быть установлен модуль, заменяемый в полевых условиях. Распространенным примером является коммутатор на базе шасси, такой как Cisco Nexus 9000 или Juniper EX9200. Модули, в свою очередь, содержат дополнительные компоненты, которые становятся доступными для родительского устройства.
+Module bays represent a space or slot within a device in which a field-replaceable module may be installed. A common example is that of a chassis-based switch such as the Cisco Nexus 9000 or Juniper EX9200. Modules in turn hold additional components that become available to the parent device.
 
-- `name`: Имя
-- `label`: Метка
-- `position`: Буквенно-цифровое положение, в котором этот модульный отсек расположен на родительском устройстве. При создании компонентов модуля строка "{module}" в названии компонента будет заменена на `position` модульного отсека. Более подробную информацию смотрите в [NetBox Documentation](https://docs.netbox.dev/en/stable/models/dcim/moduletype/#automatic-component-renaming).
+- `name`: Name
+- `label`: Label
+- `position`: The alphanumeric position in which this module bay is situated within the parent device. When creating module components, the string `{module}` in the component name will be replaced with the module bay's `position`. See the [NetBox Documentation](https://docs.netbox.dev/en/stable/models/dcim/moduletype/#automatic-component-renaming) for more details.
 
 #### Device Bays
 
-**[Документация](https://docs.netbox.dev/en/stable/models/dcim/devicebay/)**
+**[Documentation](https://docs.netbox.dev/en/stable/models/dcim/devicebay/)**
 
-Отсеки для устройств представляют собой пространство или слот в родительском устройстве, в котором может быть установлено дочернее устройство. Например, в родительском корпусе размером 2U могут размещаться четыре отдельных блейд-сервера. Шасси будет отображаться на уровне стойки как устройство размером 2U с четырьмя отсеками для устройств, а каждый сервер в нем будет определяться как устройство размером 0U, установленное в одном из отсеков для устройств. Дочерние устройства не отображаются на уровнях стойки и не учитываются как потребляющие устройства в стойке.
+Device bays represent a space or slot within a parent device in which a child device may be installed. For example, a 2U parent chassis might house four individual blade servers. The chassis would appear in the rack elevation as a 2U device with four device bays, and each server within it would be defined as a 0U device installed in one of the device bays. Child devices do not appear within rack elevations or count as consuming rack units.
 
-Дочерние устройства сами по себе являются первоклассными устройствами: это полностью независимые управляемые объекты, которые не имеют общего уровня управления с родительским устройством. Как и обычные устройства, дочерние устройства имеют свою собственную платформу (ОС), роли, теги и компоненты. Интерфейсы LAG не могут группировать интерфейсы, принадлежащие разным дочерним устройствам.
+Child devices are first-class Devices in their own right: That is, they are fully independent managed entities which don't share any control plane with the parent. Just like normal devices, child devices have their own platform (OS), role, tags, and components. LAG interfaces may not group interfaces belonging to different child devices.
 
-- `name`: Имя
-- `label`: Метка
+- `name`: Name
+- `label`: Label
 
 #### Inventory Items
 
-**[Документация](https://docs.netbox.dev/en/stable/models/dcim/inventoryitem/)**
+**[Documentation](https://docs.netbox.dev/en/stable/models/dcim/inventoryitem/)**
 
-Инвентарные позиции представляют собой аппаратные компоненты, установленные в устройстве, такие как блок питания, центральный процессор или сетевая плата. Они предназначены в первую очередь для целей инвентаризации.
+Inventory items represent hardware components installed within a device, such as a power supply or CPU or line card. They are intended to be used primarily for inventory purposes.
 
-Элементы инвентаря являются иерархическими по своей природе, так что любой отдельный элемент может быть назначен родительским для других элементов. Например, элемент инвентаря может быть создан для представления линейной карточки, в которой содержится несколько оптических элементов SFP, каждый из которых существует как дочерний элемент в устройстве. Элемент инвентаря также может быть связан с определенным компонентом в том же устройстве. Например, вы можете захотеть связать трансивер с интерфейсом.
+Inventory items are hierarchical in nature, such that any individual item may be designated as the parent for other items. For example, an inventory item might be created to represent a line card which houses several SFP optics, each of which exists as a child item within the device. An inventory item may also be associated with a specific component within the same device. For example, you may wish to associate a transceiver with an interface.
 
-- `name`: Имя
-- `label`: Метка
-- `manufacturer`: Название производителя, который производит данное изделие
-- `part_id`: Идентификатор ID детали, присвоенный производителем
+- `name`: Name
+- `label`: Label
+- `manufacturer`: The name of the manufacturer which produces this item
+- `part_id`: The part ID assigned by the manufacturer
 
 ## Data Validation / Commit Quality Checks
 
 There are two ways this repo focuses on keeping quality device-type definitions:
 
-- **Предварительные проверки** - Необязательно, но **настоятельно рекомендуется**, для помощи в выявлении простых вопросов перед совершением.(Trainling-Whitespace, фиксера, Check-yaml, Yamlfmt, Yamllint)
-  - Установка
-    - Виртуальная среда маршрута
-      - Рекомендуется создать виртуальную Env для вашего репо (`python3 -m venv venv`)
-      - Установите необходимые пакеты PIP (`pip install -r requirements.txt`)
-      - Продолжить до "Install `pre-commit` Hooks"
-    - `pre-commit` Только маршрут
+- **Pre-Commit Checks** - Optional, but **highly recommended**, for helping to identify simple issues before committing. (trailing-whitespace, end-of-file-fixer, check-yaml, yamlfmt, yamllint)
+  - Installation
+    - Virtual Environment Route
+      - It is recommended to create a virtual env for your repo (`python3 -m venv venv`)
+      - Install the required pip packages (`pip install -r requirements.txt`)
+      - Continue to the "Install `pre-commit` Hooks"
+    - `pre-commit` Only Route
       - [Install pre-commit](https://pre-commit.com/#install) (`pip install pre-commit`)
-    - Установите `pre-commi' крючки
-      - Чтобы установить сценарий перед коммитацией: `pre-commit install`
-  - Использование и полезные команды `pre-commit
+    - Install `pre-commit` Hooks
+      - To install the pre-commit script: `pre-commit install`
+  - Usage & Useful `pre-commit` Commands
     - After staging your files with `git`, to run the pre-commit script on changed files: `pre-commit run`
     - To run the pre-commit script on all files: `pre-commit run --all`
     - To uninstall the pre-commit script: `pre-commit uninstall`
