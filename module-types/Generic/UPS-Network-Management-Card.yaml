@@ -1,7 +1,7 @@
 ---
 manufacturer: Generic
 model: UPS Network Management Card
-#slug: generic-ups-network-management-card
+part_number: UPS-Network-Management-Card
 comments: UPS Network Management Card 
 interfaces:
   - name: ETH-1
