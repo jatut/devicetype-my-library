@@ -5,7 +5,6 @@ slug: generic-usb-lan-hub-8ports
 part_number: usb-lan-hub-8ports
 u_height: 1
 is_full_depth: false
-comments:
 interfaces:
   - name: ETH
     type: 1000base-t
